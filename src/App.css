@@ -25,16 +25,27 @@ h3 {
 }
 
 img {
-  background-color: #FFFFFF;
-  border: 2px solid white;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: 30%;
 }
 
 .content p {
-  align-items: center;
-  display: flex;
-  font-size: 2.5rem;
-  margin: 0 48px;
-  width: 50%;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+    justify-content: center;
+    margin: 0 48px;
+    width: 50%;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+a:hover {
+  opacity: .7;
 }
 
 .article {
@@ -44,18 +55,6 @@ img {
 .active {
   background-color: #FFFFFF;
   color: #000;
-}
-
-.about-me {
-  background-color: #FFC4EB;
-}
-
-.first-project {
-  background-color: #F1DEDC;
-}
-
-.design {
-  background-color: #ABC798;
 }
 
 .pagination {

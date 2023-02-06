@@ -1,75 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import pictureOfMe from './assets/me.jpg'
-import coinFlip from './assets/coin-flip.png'
-
-
-{/*
-function getActiveClassName (activeArticle, currentArticle) {
-  if (activeArticle !== currentArticle) {
-    return 'hide-article'
-  } else {
-    return ''
-  }
-}
-
-function App() {
-
-  const ARTICLES = [
-    {title: 'About me', description: 'I have studied front-end development for approximately 4 months. I am comfortable with html, css, javascript and jquery. I am now beginning my react journey!', img: pictureOfMe, id: 1},
-    {title: 'A coin flip', description: 'For my first project I will create a coin flip application. I want to learn more about animations alongside react so I think it will be a reasonable first challenge', img: coinFlip, id: 2},
-    {title: 'Design', description: 'I dont know?? A coin with some colors', img: '', id: 3}
-  ];
-
-  const [activeArticle, setActiveArticle] = useState(0);
-
-  const [content, setContent] = useState(ARTICLES);
-
-  
-  console.log(content);
-  
-
-  const handlePrevious = () => {
-    if (activeArticle === 0) {
-      setActiveArticle(activeArticle + ARTICLES.length -1);
-    } else {
-      setActiveArticle(activeArticle - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (activeArticle === ARTICLES.length -1) {
-      setActiveArticle(activeArticle - (ARTICLES.length -1));
-    } else {
-      setActiveArticle(activeArticle + 1);
-    }
-  };
-
-  console.log(activeArticle)
-  console.log(ARTICLES)
-
-  return (
-    <>
-        {ARTICLES.map({title, img, description, id} => (
-          <article className={` ${getActiveClassName(activeArticle, '')}`} key={article.id}>
-            <h2>{article.title}</h2>
-            <img src={article.img} height='200px' width='auto'></img>
-            <p>{article.description}</p>
-          </article>
-        ))}
-    
-      <div className='pagination'>
-          <button className='pagination-button' onClick={handlePrevious}> &laquo; </button>
-          {ARTICLES.map((article) => (
-            <div className='pagination-count' key={article.id}>{ARTICLES.indexOf(article) + 1}</div>
-          ))}
-          <button className='pagination-button' onClick={handleNext}> &raquo; </button>
-      </div> 
-             
-    </>
-  )
-}
-*/} 
+import coinFlip from './assets/coin-flip2.png'
+import coinFlipDesign from './assets/coin-flip-design-1.png'
 
 function getActiveClassName (page, articleid) {
   if (page === articleid) {
@@ -79,12 +12,18 @@ function getActiveClassName (page, articleid) {
   }
 }
 
-const Article = ({title, description, img}) => (
+const Article = ({title, description, img, link}) => (
   <section>
     <h3>{title}</h3>
     <div className='content'>
-      <img src={img} alt="" height={"400px"} width={'auto'}/>
-      <p>{description}</p>
+      <img src={img} alt="" />
+      <p>{description} 
+        <span>
+          <a href={link} target='_blank'>{link}</a>
+        </span>
+        
+      </p>
+      
     </div>
   </section>
 );
@@ -112,8 +51,8 @@ const ArticleList = ({ articles, page, setPage }) => {
   
   return (
     <div>
-      {visibleArticles.map(({title, description, img, id}) => (
-        <Article title={title} description={description} img={img} key={id} />
+      {visibleArticles.map(({title, description, img, id, link}) => (
+        <Article title={title} description={description} img={img} key={id} link={link} />
       ))}
       <div className='pagination'>
         {<button className='pagination-button' onClick={handlePrevious} >&laquo;</button>}
@@ -127,11 +66,14 @@ const ArticleList = ({ articles, page, setPage }) => {
 };
 
 const ArticlePage = () => {
+
+  const link = 'https://flipsimu.com/';
+
   const [page, setPage] = useState(1);
   const articles = [
     {title: 'About me', description: 'I have studied front-end development for approximately 4 months. I am comfortable with html, css, javascript and jquery. I am now beginning my react journey!', img: pictureOfMe, id: 1},
     {title: 'A coin flip', description: 'For my first project I will create a coin flip application. I want to learn more about animations alongside react so I think it will be a reasonable first challenge', img: coinFlip, id: 2},
-    {title: 'Design', description: 'I dont know?? A coin with some colors', img: '', id: 3}
+    {title: 'Design', description: 'This design is very simple. But I guess the focus will be to mimic the animation which can be found at:', img: coinFlipDesign, id: 3, link: link}
   ];
   if (page === 1) {
     console.log("page 1 active");
