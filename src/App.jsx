@@ -21,9 +21,7 @@ const Article = ({title, description, img, link}) => (
         <span>
           <a href={link} target='_blank'>{link}</a>
         </span>
-        
       </p>
-      
     </div>
   </section>
 );
@@ -75,6 +73,7 @@ const ArticlePage = () => {
     {title: 'A coin flip', description: 'For my first project I will create a coin flip application. I want to learn more about animations alongside react so I think it will be a reasonable first challenge', img: coinFlip, id: 2},
     {title: 'Design', description: 'This design is very simple. But I guess the focus will be to mimic the animation which can be found at:', img: coinFlipDesign, id: 3, link: link}
   ];
+
   if (page === 1) {
     console.log("page 1 active");
   }
@@ -83,10 +82,7 @@ const ArticlePage = () => {
     <ArticleList articles={articles} page={page} setPage={setPage} />
   );
 
-  
 };
-
-
 
 export default ArticlePage;
 
